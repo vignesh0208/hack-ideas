@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Button = ({
-  ButtonType,
+  buttonType,
   handleClick,
   extraClassName,
   isDisabled,
@@ -10,9 +10,9 @@ const Button = ({
 }) => {
   return (
     <button
-      type={ButtonType}
+      type={buttonType}
       onClick={handleClick}
-      className={`text-[#262626] text-sm rounded py-2 px-6 cursor-pointer border-[1px] border-[#c5c9cd] bg-white  ${extraClassName}`}
+      className={`cursor-pointe ${extraClassName}`}
       disabled={isDisabled}>
       {children}
     </button>
@@ -20,7 +20,7 @@ const Button = ({
 };
 
 Button.propTypes = {
-  ButtonType: PropTypes.oneOf(['button', 'submit']).isRequired,
+  buttonType: PropTypes.oneOf(['button', 'submit']).isRequired,
   extraClassName: PropTypes.string,
   isDisabled: PropTypes.bool,
   children: PropTypes.any,
@@ -28,7 +28,7 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
-  ButtonType: 'button',
+  buttonType: 'button',
   extraClassName: '',
   isDisabled: false,
   children: '',

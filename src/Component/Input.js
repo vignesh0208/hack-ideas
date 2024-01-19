@@ -12,19 +12,24 @@ const Input = ({
   handleChange,
   isDisabled,
   inputRef,
+  inputRequired,
 }) => {
   return (
     <input
       type={inputType}
       id={inputId}
       name={inputName}
-      className={`p-2 rounded text-sm text-[#262626] border-[1px] border-[#c5c9cd] bg-white focus-visible:outline-none ${extraClassName}`}
+      className={`p-2 rounded text-sm text-[#262626] border-[1px] border-[#c5c9cd] bg-white focus-visible:outline-none ${
+        inputType === 'number' &&
+        '[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none'
+      } ${extraClassName}`}
       placeholder={inputPlaceholder}
       value={inputType !== 'checkbox' ? inputValue : undefined}
       checked={inputType === 'checkbox' ? inputChecked : undefined}
       onChange={handleChange}
       disabled={isDisabled}
       ref={inputRef}
+      required={inputRequired}
     />
   );
 };
@@ -46,6 +51,7 @@ Input.propTypes = {
   handleChange: PropTypes.func,
   isDisabled: PropTypes.bool,
   inputRef: PropTypes.any,
+  inputRequired: PropTypes.bool,
 };
 
 Input.defaultProps = {
@@ -59,6 +65,7 @@ Input.defaultProps = {
   handleChange: () => {},
   isDisabled: false,
   inputRef: null,
+  inputRequired: false,
 };
 
 export default Input;

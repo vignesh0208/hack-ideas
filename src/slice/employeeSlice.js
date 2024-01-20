@@ -5,7 +5,6 @@ export const fetchEmployeeData = createAsyncThunk(
   'fetch/employee',
   async () => {
     const response = await api.get('/employees');
-    console.log(response);
     return response.data;
   },
 );
@@ -25,6 +24,6 @@ export const employeeSlices = createSlice({
   },
 });
 
-export const seletedAllUsers = (state) => state.employee.employees;
+export const fetchEmployeesData = (state) => state.employee.employees;
 
 export default employeeSlices.reducer;

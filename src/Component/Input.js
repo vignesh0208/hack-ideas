@@ -13,6 +13,7 @@ const Input = ({
   isDisabled,
   inputRef,
   inputRequired,
+  inputAutoComplete,
 }) => {
   return (
     <input
@@ -30,6 +31,7 @@ const Input = ({
       disabled={isDisabled}
       ref={inputRef}
       required={inputRequired}
+      autoComplete={inputAutoComplete}
     />
   );
 };
@@ -52,6 +54,7 @@ Input.propTypes = {
   isDisabled: PropTypes.bool,
   inputRef: PropTypes.any,
   inputRequired: PropTypes.bool,
+  inputAutoComplete: PropTypes.string,
 };
 
 Input.defaultProps = {
@@ -66,6 +69,7 @@ Input.defaultProps = {
   isDisabled: false,
   inputRef: null,
   inputRequired: false,
+  inputAutoComplete: 'off',
 };
 
 export default Input;

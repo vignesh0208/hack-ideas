@@ -1,8 +1,18 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Input, Button } from '../../Component';
+import { handleLogin } from '../../slice/employeeSlice';
 
 const Login = () => {
+  const dispatch = useDispatch();
+
   const [employeeid, setEmployeeid] = useState('');
+
+  const handleEmployeeLogin = (e) => {
+    e.preventDefault();
+    dispatch(handleLogin(employeeid));
+    setEmployeeid('');
+  };
 
   return (
     <section className='bg-gray-50 dark:bg-gray-900'>
@@ -14,7 +24,7 @@ const Login = () => {
             </h1>
             <form
               className='space-y-4 md:space-y-6'
-              onSubmit={(e) => e.preventDefault}>
+              onSubmit={handleEmployeeLogin}>
               <div>
                 <label
                   htmlFor='employeeid'
@@ -22,7 +32,7 @@ const Login = () => {
                   Your Employee Id
                 </label>
                 <Input
-                  inputType='number'
+                  inputType='text'
                   inputId='employeeid'
                   inputName='employeeid'
                   extraClassName='bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'

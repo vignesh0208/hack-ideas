@@ -18,7 +18,16 @@ const initialState = {
 const fetchChallengeSlice = createSlice({
   name: 'fetchChallenge',
   initialState,
-  reducers: {},
+  reducers: {
+    upvoteChallenge: (state, action) => {
+      const { id, userId } = action.payload;
+      const challenge = state.challenges.find((e) => e.id === id);
+      if (challenge && !challenge.votedUsers.includes(userId)) {
+        challenge.votes += 1;
+        challenge.votedUsers.push(userId);
+      }
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchDataChallenge.pending, (state, action) => {
@@ -39,4 +48,5 @@ export const fetchedChallengesData = (state) => state.fetchChallenge.challenges;
 export const fetchedChallengeStatus = (state) => state.fetchChallenge.status;
 export const fetchedChallengeError = (state) => state.fetchChallenge.error;
 
+export const { upvoteChallenge } = fetchChallengeSlice.actions;
 export default fetchChallengeSlice.reducer;

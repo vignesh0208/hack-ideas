@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import 'tailwindcss/tailwind.css';
 import ChallengesList from './Pages/ChallengesList/ChallengesList';
@@ -12,6 +12,7 @@ import { loginEmployeeId, handleLoginDetail } from './slice/employeeSlice';
 import { fetchDataChallenge } from './slice/ChallengesSlice/fetchChallengeSlice';
 
 function App() {
+  const navigator = useNavigate();
   const dispatch = useDispatch();
   const employeeId = useSelector(loginEmployeeId);
 
@@ -37,6 +38,7 @@ function App() {
 
       const timeoutId = setTimeout(() => {
         sessionStorage.removeItem('isLoggedIn');
+        sessionStorage.removeItem('employeeid');
         setLoggedIn(false);
       }, 10 * 60 * 1000);
 
@@ -45,6 +47,7 @@ function App() {
       return () => clearTimeout(timeoutId);
     } else {
       sessionStorage.removeItem('isLoggedIn');
+      sessionStorage.removeItem('employeeid');
       setLoggedIn(false);
     }
   }, [dispatch, employeeId]);

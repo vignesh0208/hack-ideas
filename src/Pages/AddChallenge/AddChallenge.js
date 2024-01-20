@@ -50,6 +50,7 @@ const AddChallenge = () => {
       votes: 0,
       createdAt: new Date().getTime(),
       userId: currentUserId ? currentUserId : '',
+      votedUsers: [],
     };
 
     dispatch(postChallengeInfo(postChallenge));

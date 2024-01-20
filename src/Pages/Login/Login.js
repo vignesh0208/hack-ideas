@@ -1,17 +1,19 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Input, Button } from '../../Component';
-import { handleLogin } from '../../slice/employeeSlice';
+import {
+  loginEmployeeId,
+  handleLoginInfo,
+  handleLoginDetail,
+} from '../../slice/employeeSlice';
 
 const Login = () => {
   const dispatch = useDispatch();
-
-  const [employeeid, setEmployeeid] = useState('');
+  const employeeid = useSelector(loginEmployeeId);
 
   const handleEmployeeLogin = (e) => {
     e.preventDefault();
-    dispatch(handleLogin(employeeid));
-    setEmployeeid('');
+    dispatch(handleLoginDetail(employeeid));
   };
 
   return (
@@ -34,11 +36,12 @@ const Login = () => {
                 <Input
                   inputType='text'
                   inputId='employeeid'
-                  inputName='employeeid'
                   extraClassName='bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
                   inputPlaceholder='Enter your employee id'
                   inputValue={employeeid}
-                  handleChange={(e) => setEmployeeid(e.target.value)}
+                  handleChange={(e) =>
+                    dispatch(handleLoginInfo(e.target.value))
+                  }
                   inputRequired={true}
                 />
               </div>

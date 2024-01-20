@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import 'tailwindcss/tailwind.css';
 import ChallengesList from './Pages/ChallengesList/ChallengesList';
 import AddChallenge from './Pages/AddChallenge/AddChallenge';
 import Login from './Pages/Login/Login';
 import Missing from './Pages/Missing/Missing';
 import authentication from './utils/authentication';
-import { loginEmployeeDetails } from './slice/employeeSlice';
+import { loginEmployeeId, handleLoginDetail } from './slice/employeeSlice';
+import { fetchDataChallenge } from './slice/ChallengesSlice/fetchChallengeSlice';
 
 function App() {
-  const navigator = useNavigate();
-  const employeeDetail = useSelector(loginEmployeeDetails);
+  const dispatch = useDispatch();
+  const employeeId = useSelector(loginEmployeeId);
 
   const [isLoggedIn, setLoggedIn] = useState(
     sessionStorage.getItem('isLoggedIn') === 'true',
@@ -24,7 +26,12 @@ function App() {
   const AuthenticatedAddChallenge = authentication(AddChallenge, isLoggedIn);
 
   useEffect(() => {
-    if (employeeDetail?.userId) {
+    dispatch(fetchDataChallenge());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (employeeId) {
+      dispatch(handleLoginDetail(employeeId));
       setLoggedIn(true);
       sessionStorage.setItem('isLoggedIn', 'true');
 
@@ -33,11 +40,14 @@ function App() {
         setLoggedIn(false);
       }, 10 * 60 * 1000);
 
-      navigator('/challenge-list');
+      // navigator('/challenge-list');
 
       return () => clearTimeout(timeoutId);
+    } else {
+      sessionStorage.removeItem('isLoggedIn');
+      setLoggedIn(false);
     }
-  }, [employeeDetail]);
+  }, [dispatch, employeeId]);
 
   return (
     <Routes>

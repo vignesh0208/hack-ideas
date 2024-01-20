@@ -1,24 +1,22 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import {
-  fetchDataChallenge,
   fetchedChallengesData,
   fetchedChallengeStatus,
   fetchedChallengeError,
 } from '../../slice/ChallengesSlice/fetchChallengeSlice';
 
 const ChallengesList = () => {
-  const dispatch = useDispatch();
   const challengesData = useSelector(fetchedChallengesData);
   const challengesStatus = useSelector(fetchedChallengeStatus);
   const challengesError = useSelector(fetchedChallengeError);
 
-  useEffect(() => {
-    if (challengesStatus === 'idle') {
-      dispatch(fetchDataChallenge());
-    }
-  }, [challengesStatus, dispatch]);
-
+  if (challengesStatus === 'fetching') {
+    return <div>Loading...</div>;
+  }
+  if (challengesStatus === 'error') {
+    return <div>{challengesError}</div>;
+  }
   return (
     <div>
       <h2>Challenges</h2>

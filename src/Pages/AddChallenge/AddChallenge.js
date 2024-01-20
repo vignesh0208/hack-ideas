@@ -1,34 +1,63 @@
 import React, { useReducer } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { Input, Textarea, Button } from '../../Component';
+import { loginEmployeeId } from '../../slice/employeeSlice';
+import {
+  postChallengeInfo,
+  postChallengeStatus,
+  postChallengeError,
+} from '../../slice/ChallengesSlice/postChallengeSlice';
+import { fetchedChallengesData } from '../../slice/ChallengesSlice/fetchChallengeSlice';
 
-const handleChallenge = (state, action) => {
-  return { ...state, [action.type]: action.payload };
+const challengeObj = {
+  title: '',
+  description: '',
+  tags: '',
 };
 
-const AddChallenge = ({ onAdd }) => {
-  const challengeObj = {
-    title: '',
-    description: '',
-    tags: '',
-  };
+const handleChallenge = (state, action) => {
+  if (action.state === 'update') {
+    return { ...state, [action.type]: action.payload };
+  } else if (action.state === 'reset') {
+    return challengeObj;
+  }
+};
+
+const AddChallenge = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const currentUserId = useSelector(loginEmployeeId);
+  const challengeList = useSelector(fetchedChallengesData);
+  const postStatus = useSelector(postChallengeStatus);
+  const postError = useSelector(postChallengeError);
+
   const [newChallenge, dispatchChallenge] = useReducer(
     handleChallenge,
     challengeObj,
   );
 
-  const handleAddChallenge = (e) => {
+  const handleAddChallenge = async (e) => {
     e.preventDefault();
     const postChallenge = {
-      id: '',
+      id:
+        challengeList?.length > 0
+          ? challengeList[challengeList.length - 1].id
+          : 1,
       title: newChallenge.title,
       description: newChallenge.description,
-      tags: newChallenge.split(',').map((tag) => tag.trim()),
+      tags: newChallenge.tags.split(',').map((tag) => tag.trim()),
       votes: 0,
-      createdAt: new Date().toLocaleDateString(),
-      userId: 'HIIND03',
+      createdAt: new Date().getTime(),
+      userId: currentUserId ? currentUserId : '',
     };
 
-    onAdd(postChallenge);
+    dispatch(postChallengeInfo(postChallenge));
+    if (postStatus === 'success') {
+      navigate('/challenge-list');
+    } else if (postStatus === 'error') {
+      console.error('Error while posting challenge', postError);
+    }
   };
 
   return (
@@ -56,6 +85,7 @@ const AddChallenge = ({ onAdd }) => {
               inputValue={newChallenge.title}
               handleChange={(e) =>
                 dispatchChallenge({
+                  state: 'update',
                   type: 'title',
                   payload: e.target.value,
                 })
@@ -78,6 +108,7 @@ const AddChallenge = ({ onAdd }) => {
               children={newChallenge.description}
               handleChange={(e) =>
                 dispatchChallenge({
+                  state: 'update',
                   type: 'description',
                   payload: e.target.value,
                 })
@@ -100,6 +131,7 @@ const AddChallenge = ({ onAdd }) => {
               inputValue={newChallenge.tags}
               handleChange={(e) =>
                 dispatchChallenge({
+                  state: 'update',
                   type: 'tags',
                   payload: e.target.value,
                 })

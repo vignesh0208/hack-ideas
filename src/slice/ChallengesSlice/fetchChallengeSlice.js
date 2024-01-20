@@ -15,29 +15,28 @@ const initialState = {
   error: null,
 };
 
-export const fetchChallengeSlices = createSlice({
-  name: 'fetchChallenges',
+const fetchChallengeSlice = createSlice({
+  name: 'fetchChallenge',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchDataChallenge.pending, (state, data) => {
+      .addCase(fetchDataChallenge.pending, (state, action) => {
         state.status = 'fetching';
       })
-      .addCase(fetchDataChallenge.fulfilled, (state, data) => {
+      .addCase(fetchDataChallenge.fulfilled, (state, action) => {
         state.status = 'success';
-        state.challenges = data.payload;
+        state.challenges = action.payload;
       })
-      .addCase(fetchDataChallenge.rejected, (state, data) => {
+      .addCase(fetchDataChallenge.rejected, (state, action) => {
         state.status = 'error';
-        state.error = data.error.message;
+        state.error = action.error.message;
       });
   },
 });
 
-export const fetchedChallengesData = (state) =>
-  state.fetchChallenges.challenges;
-export const fetchedChallengeStatus = (state) => state.fetchChallenges.status;
-export const fetchedChallengeError = (state) => state.fetchChallenges.error;
+export const fetchedChallengesData = (state) => state.fetchChallenge.challenges;
+export const fetchedChallengeStatus = (state) => state.fetchChallenge.status;
+export const fetchedChallengeError = (state) => state.fetchChallenge.error;
 
-export default fetchChallengeSlices.reducer;
+export default fetchChallengeSlice.reducer;

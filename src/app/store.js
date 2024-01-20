@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 import employeeSlice from '../slice/employeeSlice';
-import fetchChallengeSlices from '../slice/ChallengesSlice/fetchChallengeSlice';
+import fetchChallengeSlice from '../slice/ChallengesSlice/fetchChallengeSlice';
+import postChallengeSlice from '../slice/ChallengesSlice/postChallengeSlice';
 
 export const store = configureStore({
   reducer: {
     employee: employeeSlice,
-    fetchChallenges: fetchChallengeSlices,
+    fetchChallenge: fetchChallengeSlice,
+    postChallenge: postChallengeSlice,
   },
 });

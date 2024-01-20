@@ -1,4 +1,4 @@
-import React, { useReducer, useState } from 'react';
+import React, { useReducer } from 'react';
 import { Input, Textarea, Button } from '../../Component';
 
 const handleChallenge = (state, action) => {

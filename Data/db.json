@@ -1,70 +1,70 @@
 {
   "employee": [
     {
-      "id": 1,
+      "id": "1",
       "userId": "HIIND01",
       "name": "Leanne Graham",
       "username": "Bret",
       "email": "Sincere@april.biz"
     },
     {
-      "id": 2,
+      "id": "2",
       "userId": "HIIND02",
       "name": "Ervin Howell",
       "username": "Antonette",
       "email": "Shanna@melissa.tv"
     },
     {
-      "id": 3,
+      "id": "3",
       "userId": "HIIND03",
       "name": "Clementine Bauch",
       "username": "Samantha",
       "email": "Nathan@yesenia.net"
     },
     {
-      "id": 4,
+      "id": "4",
       "userId": "HIIND04",
       "name": "Patricia Lebsack",
       "username": "Karianne",
       "email": "Julianne.OConner@kory.org"
     },
     {
-      "id": 5,
+      "id": "5",
       "userId": "HIIND05",
       "name": "Chelsey Dietrich",
       "username": "Kamren",
       "email": "Lucio_Hettinger@annie.ca"
     },
     {
-      "id": 6,
+      "id": "6",
       "userId": "HIIND06",
       "name": "Mrs. Dennis Schulist",
       "username": "Leopoldo_Corkery",
       "email": "Karley_Dach@jasper.info"
     },
     {
-      "id": 7,
+      "id": "7",
       "userId": "HIIND07",
       "name": "Kurtis Weissnat",
       "username": "Elwyn.Skiles",
       "email": "Telly.Hoeger@billy.biz"
     },
     {
-      "id": 8,
+      "id": "8",
       "userId": "HIIND08",
       "name": "Nicholas Runolfsdottir V",
       "username": "Maxime_Nienow",
       "email": "Sherwood@rosamond.me"
     },
     {
-      "id": 9,
+      "id": "9",
       "userId": "HIIND09",
       "name": "Glenna Reichert",
       "username": "Delphine",
       "email": "Chaim_McDermott@dana.io"
     },
     {
-      "id": 10,
+      "id": "10",
       "userId": "HIIND10",
       "name": "Clementina DuBuque",
       "username": "Moriah.Stanton",
@@ -73,40 +73,44 @@
   ],
   "challenges": [
     {
-      "id": 1,
+      "id": "1",
       "title": "Record of Employee",
       "createdAt": 1705722575,
       "description": "In order to keep your application bundles small and support code-splitting of your routes, each route can provide an async function that resolves the non-route-matching portions of your route definition.",
       "tags": ["feature", "tech"],
-      "votes": 5,
-      "userId": "HIIND07"
+      "votes": 0,
+      "userId": "HIIND07",
+      "votedUsers": []
     },
     {
-      "id": 2,
+      "id": "2",
       "title": "Employee",
       "createdAt": 1705622575,
       "description": "This is useful if you have slim loaders that you don't mind on the critical bundle, and would like to kick off their data fetches in parallel with the component download. This is close to how Remix handles fetching because each route is it's own API route.",
       "tags": ["feature", "tech"],
-      "votes": 5,
-      "userId": "HIIND03"
+      "votes": 0,
+      "userId": "HIIND03",
+      "votedUsers": []
     },
     {
-      "id": 3,
+      "id": "3",
       "title": "Researcher",
       "createdAt": 1705621575,
       "description": "As the researcher or facilitator, you should be extremely familiar with the content you will test and with the domain it belongs to. This is particularly important for people working for agencies, since they may be new to the content area.",
       "tags": ["feature", "tech"],
-      "votes": 5,
-      "userId": "HIIND02"
+      "votes": 0,
+      "userId": "HIIND02",
+      "votedUsers": []
     },
     {
-      "id": 4,
+      "id": "4",
       "title": "Participants",
       "createdAt": 1703622575,
       "description": "We'd want to also spend time with the content creators, as well as subject matter experts. As a researcher, you don't need to become an expert in the topic (investment), but you do need to have a rough idea of what your participants are reading.",
       "tags": ["feature", "tech"],
-      "votes": 5,
-      "userId": "HIIND07"
+      "votes": 0,
+      "userId": "HIIND07",
+      "votedUsers": []
     }
   ]
 }

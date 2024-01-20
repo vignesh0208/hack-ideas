@@ -12,7 +12,7 @@ const Textarea = ({
   textareaReadOnly,
   textareaRequired,
   textareaDisabled,
-  textareaValue,
+  children,
   handleChange,
 }) => {
   return (
@@ -22,14 +22,13 @@ const Textarea = ({
       name={textareaName}
       rows={textareaRow}
       cols={textareaCols}
-      maxlength={textareaMaxLength}
+      maxLength={textareaMaxLength}
       placeholder={textareaPlaceholder}
-      readonly={textareaReadOnly}
+      readOnly={textareaReadOnly}
       required={textareaRequired}
       disabled={textareaDisabled}
-      handleChange={handleChange}>
-      {textareaValue}
-    </textarea>
+      value={children}
+      onChange={handleChange}></textarea>
   );
 };
 
@@ -44,7 +43,7 @@ Textarea.propTypes = {
   textareaReadOnly: PropTypes.bool,
   textareaRequired: PropTypes.bool,
   textareaDisabled: PropTypes.bool,
-  textareaValue: PropTypes.string,
+  children: PropTypes.string,
   handleChange: PropTypes.func,
 };
 
@@ -53,7 +52,7 @@ Textarea.defaultProps = {
   textareaRow: 4,
   textareaCols: 50,
   textareaPlaceholder: 'Enter value',
-  textareaValue: '',
+  children: '',
 };
 
 export default Textarea;

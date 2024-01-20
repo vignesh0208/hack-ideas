@@ -17,7 +17,7 @@ const Textarea = ({
 }) => {
   return (
     <textarea
-      className={extraClassName}
+      className={`resize-none focus-visible:outline-none ${extraClassName}`}
       id={textareaId}
       name={textareaName}
       rows={textareaRow}

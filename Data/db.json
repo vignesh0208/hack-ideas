@@ -1,0 +1,102 @@
+{
+  "employee": [
+    {
+      "userId": "HIIND01",
+      "name": "Leanne Graham",
+      "username": "Bret",
+      "email": "Sincere@april.biz"
+    },
+    {
+      "userId": "HIIND02",
+      "name": "Ervin Howell",
+      "username": "Antonette",
+      "email": "Shanna@melissa.tv"
+    },
+    {
+      "userId": "HIIND03",
+      "name": "Clementine Bauch",
+      "username": "Samantha",
+      "email": "Nathan@yesenia.net"
+    },
+    {
+      "userId": "HIIND04",
+      "name": "Patricia Lebsack",
+      "username": "Karianne",
+      "email": "Julianne.OConner@kory.org"
+    },
+    {
+      "userId": "HIIND05",
+      "name": "Chelsey Dietrich",
+      "username": "Kamren",
+      "email": "Lucio_Hettinger@annie.ca"
+    },
+    {
+      "userId": "HIIND06",
+      "name": "Mrs. Dennis Schulist",
+      "username": "Leopoldo_Corkery",
+      "email": "Karley_Dach@jasper.info"
+    },
+    {
+      "userId": "HIIND07",
+      "name": "Kurtis Weissnat",
+      "username": "Elwyn.Skiles",
+      "email": "Telly.Hoeger@billy.biz"
+    },
+    {
+      "userId": "HIIND08",
+      "name": "Nicholas Runolfsdottir V",
+      "username": "Maxime_Nienow",
+      "email": "Sherwood@rosamond.me"
+    },
+    {
+      "userId": "HIIND09",
+      "name": "Glenna Reichert",
+      "username": "Delphine",
+      "email": "Chaim_McDermott@dana.io"
+    },
+    {
+      "userId": "HIIND10",
+      "name": "Clementina DuBuque",
+      "username": "Moriah.Stanton",
+      "email": "Rey.Padberg@karina.biz"
+    }
+  ],
+  "challenges": [
+    {
+      "id": 1,
+      "title": "Record of Employee",
+      "createdAt": 1705722575,
+      "description": "In order to keep your application bundles small and support code-splitting of your routes, each route can provide an async function that resolves the non-route-matching portions of your route definition.",
+      "tags": ["feature", "tech"],
+      "votes": 5,
+      "userId": "HIIND07"
+    },
+    {
+      "id": 2,
+      "title": "Employee",
+      "createdAt": 1705622575,
+      "description": "This is useful if you have slim loaders that you don't mind on the critical bundle, and would like to kick off their data fetches in parallel with the component download. This is close to how Remix handles fetching because each route is it's own API route.",
+      "tags": ["feature", "tech"],
+      "votes": 5,
+      "userId": "HIIND03"
+    },
+    {
+      "id": 3,
+      "title": "Researcher",
+      "createdAt": 1705621575,
+      "description": "As the researcher or facilitator, you should be extremely familiar with the content you will test and with the domain it belongs to. This is particularly important for people working for agencies, since they may be new to the content area.",
+      "tags": ["feature", "tech"],
+      "votes": 5,
+      "userId": "HIIND02"
+    },
+    {
+      "id": 4,
+      "title": "Participants",
+      "createdAt": 1703622575,
+      "description": "We'd want to also spend time with the content creators, as well as subject matter experts. As a researcher, you don't need to become an expert in the topic (investment), but you do need to have a rough idea of what your participants are reading.",
+      "tags": ["feature", "tech"],
+      "votes": 5,
+      "userId": "HIIND07"
+    }
+  ]
+}

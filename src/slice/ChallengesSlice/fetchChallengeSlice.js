@@ -13,6 +13,7 @@ const initialState = {
   challenges: [],
   status: 'idle',
   error: null,
+  setSortBy: 'votes',
 };
 
 const fetchChallengeSlice = createSlice({
@@ -30,6 +31,9 @@ const fetchChallengeSlice = createSlice({
         challenge.votes += 1;
         challenge.votedUsers.push(employeeId);
       }
+    },
+    setSortBy: (state, action) => {
+      return { ...state, setSortBy: action.payload };
     },
   },
   extraReducers: (builder) => {
@@ -51,6 +55,8 @@ const fetchChallengeSlice = createSlice({
 export const fetchedChallengesData = (state) => state.fetchChallenge.challenges;
 export const fetchedChallengeStatus = (state) => state.fetchChallenge.status;
 export const fetchedChallengeError = (state) => state.fetchChallenge.error;
+export const setSortChallenges = (state) => state.fetchChallenge.setSortBy;
 
-export const { updateChallenge, upvoteChallenge } = fetchChallengeSlice.actions;
+export const { updateChallenge, upvoteChallenge, setSortBy } =
+  fetchChallengeSlice.actions;
 export default fetchChallengeSlice.reducer;

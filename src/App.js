@@ -51,7 +51,7 @@ function App() {
       sessionStorage.removeItem('employeeid');
       setLoggedIn(false);
     }
-  }, [dispatch, employeeId, employeeDetails, navigator]);
+  }, [dispatch, employeeId, employeeDetails]);
 
   return (
     <section className='h-screen bg-gray-50 dark:bg-gray-900'>

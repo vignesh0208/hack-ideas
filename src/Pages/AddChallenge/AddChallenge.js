@@ -54,7 +54,7 @@ const AddChallenge = () => {
     try {
       const responce = await dispatch(postChallengeInfo(postChallenge));
       dispatch(updateChallenge(responce.payload));
-      navigate('/challenge-list');
+      navigate('/challenge');
     } catch (err) {
       console.error('Error while posting challenge', err);
     }
@@ -119,7 +119,7 @@ const AddChallenge = () => {
           <label
             htmlFor='tags'
             className='block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300'>
-            Tags (comma-separated)
+            Tags
           </label>
           <Select
             selectName='tag'

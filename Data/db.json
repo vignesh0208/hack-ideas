@@ -71,46 +71,5 @@
       "email": "Rey.Padberg@karina.biz"
     }
   ],
-  "challenges": [
-    {
-      "id": "1",
-      "title": "Record of Employee",
-      "createdAt": 1705722575,
-      "description": "In order to keep your application bundles small and support code-splitting of your routes, each route can provide an async function that resolves the non-route-matching portions of your route definition.",
-      "tag": "enhancement",
-      "votes": 0,
-      "userId": "HIIND07",
-      "votedUsers": []
-    },
-    {
-      "id": "2",
-      "title": "Employee",
-      "createdAt": 1705622575,
-      "description": "This is useful if you have slim loaders that you don't mind on the critical bundle, and would like to kick off their data fetches in parallel with the component download. This is close to how Remix handles fetching because each route is it's own API route.",
-      "tag": "tech",
-      "votes": 0,
-      "userId": "HIIND03",
-      "votedUsers": []
-    },
-    {
-      "id": "3",
-      "title": "Researcher",
-      "createdAt": 1705621575,
-      "description": "As the researcher or facilitator, you should be extremely familiar with the content you will test and with the domain it belongs to. This is particularly important for people working for agencies, since they may be new to the content area.",
-      "tag": "feature",
-      "votes": 0,
-      "userId": "HIIND02",
-      "votedUsers": []
-    },
-    {
-      "id": "4",
-      "title": "Participants",
-      "createdAt": 1703622575,
-      "description": "We'd want to also spend time with the content creators, as well as subject matter experts. As a researcher, you don't need to become an expert in the topic (investment), but you do need to have a rough idea of what your participants are reading.",
-      "tag": "design",
-      "votes": 0,
-      "userId": "HIIND07",
-      "votedUsers": []
-    }
-  ]
+  "challenges": []
 }

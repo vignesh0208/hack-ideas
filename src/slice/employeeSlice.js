@@ -23,19 +23,8 @@ export const employeeSlices = createSlice({
       return { ...state, employeeid: action.payload };
     },
     handleLoginDetail: (state, action) => {
-      const employee =
-        state.employees &&
-        state.employees.find((emp) => emp.userId === action.payload);
-      if (employee?.userId) {
-        const newState = {
-          ...state,
-          loginEmployee: employee,
-          employeeid: employee?.userId,
-        };
-
-        sessionStorage.setItem('employeeid', newState.employeeid);
-        return newState;
-      }
+      state.loginEmployee = action.payload;
+      sessionStorage.setItem('employeeid', action.payload.userId);
     },
   },
   extraReducers: (builder) => {

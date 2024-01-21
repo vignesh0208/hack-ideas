@@ -5,15 +5,22 @@ import {
   loginEmployeeId,
   handleLoginInfo,
   handleLoginDetail,
+  fetchEmployeesData,
 } from '../../slice/employeeSlice';
 
 const Login = () => {
   const dispatch = useDispatch();
   const employeeid = useSelector(loginEmployeeId);
+  const employeesDetailList = useSelector(fetchEmployeesData);
 
   const handleEmployeeLogin = (e) => {
     e.preventDefault();
-    dispatch(handleLoginDetail(employeeid));
+    const employee =
+      employeesDetailList &&
+      employeesDetailList.find((emp) => emp.userId === employeeid);
+    if (employee?.userId) {
+      dispatch(handleLoginDetail(employee));
+    }
   };
 
   return (

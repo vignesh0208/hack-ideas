@@ -19,6 +19,9 @@ const fetchChallengeSlice = createSlice({
   name: 'fetchChallenge',
   initialState,
   reducers: {
+    updateChallenge: (state, action) => {
+      return { ...state, challenges: [...state.challenges, action.payload] };
+    },
     upvoteChallenge: (state, action) => {
       const { id, userId } = action.payload;
       const challenge = state.challenges.find((e) => e.id === id);
@@ -48,5 +51,5 @@ export const fetchedChallengesData = (state) => state.fetchChallenge.challenges;
 export const fetchedChallengeStatus = (state) => state.fetchChallenge.status;
 export const fetchedChallengeError = (state) => state.fetchChallenge.error;
 
-export const { upvoteChallenge } = fetchChallengeSlice.actions;
+export const { updateChallenge, upvoteChallenge } = fetchChallengeSlice.actions;
 export default fetchChallengeSlice.reducer;

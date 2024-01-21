@@ -1,19 +1,19 @@
 import React, { useReducer } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { Input, Textarea, Button } from '../../Component';
+import { Input, Textarea, Select, Button } from '../../Component';
 import { loginEmployeeId } from '../../slice/employeeSlice';
+import { postChallengeInfo } from '../../slice/ChallengesSlice/postChallengeSlice';
 import {
-  postChallengeInfo,
-  postChallengeStatus,
-  postChallengeError,
-} from '../../slice/ChallengesSlice/postChallengeSlice';
-import { fetchedChallengesData } from '../../slice/ChallengesSlice/fetchChallengeSlice';
+  updateChallenge,
+  fetchedChallengesData,
+} from '../../slice/ChallengesSlice/fetchChallengeSlice';
 
+const predefinedTags = ['feature', 'tech', 'design', 'bug', 'enhancement'];
 const challengeObj = {
   title: '',
   description: '',
-  tags: '',
+  tag: predefinedTags[0],
 };
 
 const handleChallenge = (state, action) => {
@@ -29,8 +29,6 @@ const AddChallenge = () => {
   const navigate = useNavigate();
   const currentUserId = useSelector(loginEmployeeId);
   const challengeList = useSelector(fetchedChallengesData);
-  const postStatus = useSelector(postChallengeStatus);
-  const postError = useSelector(postChallengeError);
 
   const [newChallenge, dispatchChallenge] = useReducer(
     handleChallenge,
@@ -46,18 +44,19 @@ const AddChallenge = () => {
           : 1,
       title: newChallenge.title,
       description: newChallenge.description,
-      tags: newChallenge.tags.split(',').map((tag) => tag.trim()),
+      tag: newChallenge.tag,
       votes: 0,
       createdAt: new Date().getTime(),
       userId: currentUserId ? currentUserId : '',
       votedUsers: [],
     };
 
-    dispatch(postChallengeInfo(postChallenge));
-    if (postStatus === 'success') {
+    try {
+      const responce = await dispatch(postChallengeInfo(postChallenge));
+      dispatch(updateChallenge(responce.payload));
       navigate('/challenge-list');
-    } else if (postStatus === 'error') {
-      console.error('Error while posting challenge', postError);
+    } catch (err) {
+      console.error('Error while posting challenge', err);
     }
   };
 
@@ -123,20 +122,18 @@ const AddChallenge = () => {
               className='block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300'>
               Tags (comma-separated)
             </label>
-            <Input
-              inputType='text'
-              inputId='tags'
-              inputName='tags'
-              extraClassName='shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light'
-              inputPlaceholder='Enter Tags (comma-separated)'
-              inputValue={newChallenge.tags}
-              handleChange={(e) =>
+            <Select
+              selectName='tag'
+              selectOptions={predefinedTags}
+              selectedValue={newChallenge.tag}
+              handleSelect={(e) =>
                 dispatchChallenge({
                   state: 'update',
-                  type: 'tags',
+                  type: 'tag',
                   payload: e.target.value,
                 })
               }
+              extraClassName='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 capitalize'
             />
           </div>
 

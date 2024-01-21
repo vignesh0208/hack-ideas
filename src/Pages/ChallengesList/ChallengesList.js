@@ -51,7 +51,7 @@ const ChallengesList = () => {
           <li key={index}>
             <h3>{challenge.title}</h3>
             <p>{challenge.description}</p>
-            <p>Tags: {challenge.tags.join(', ')}</p>
+            <p className='capitalize'>Tags: {challenge.tag}</p>
             <p>Votes: {challenge.votes}</p>
             <p>Created at: {challenge.createdAt}</p>
             <Button

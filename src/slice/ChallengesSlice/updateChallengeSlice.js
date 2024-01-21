@@ -42,5 +42,4 @@ export const updateChallengesData = (state) => state.updateChallenge.data;
 export const updateChallengeStatus = (state) => state.updateChallenge.status;
 export const updateChallengeError = (state) => state.updateChallenge.error;
 
-export const { upvoteChallenge } = updateChallengeSlice.actions;
 export default updateChallengeSlice.reducer;

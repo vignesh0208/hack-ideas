@@ -23,11 +23,12 @@ const fetchChallengeSlice = createSlice({
       return { ...state, challenges: [...state.challenges, action.payload] };
     },
     upvoteChallenge: (state, action) => {
-      const { id, userId } = action.payload;
+      const { id } = action.payload.response;
+      const employeeId = action.payload.employeeId;
       const challenge = state.challenges.find((e) => e.id === id);
-      if (challenge && !challenge.votedUsers.includes(userId)) {
+      if (challenge && !challenge.votedUsers.includes(employeeId)) {
         challenge.votes += 1;
-        challenge.votedUsers.push(userId);
+        challenge.votedUsers.push(employeeId);
       }
     },
   },
